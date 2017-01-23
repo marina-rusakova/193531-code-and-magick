@@ -1,14 +1,14 @@
-const WINDOW_HEIGHT = 300;
+var WINDOW_HEIGHT = 300;
 
 window.convertY = function(y) {
   return WINDOW_HEIGHT - y;
 }
 
 window.renderStatistics = function(ctx, names, times) {
-  const cloudX0 = 100;
-  const cloudY0 = 10;
-  const cloudHeight = 270;
-  const cloudWidth  = 420;
+  var cloudX0 = 100;
+  var cloudY0 = 10;
+  var cloudHeight = 270;
+  var cloudWidth  = 420;
 
   var cloudX = cloudX0;
   var cloudY = cloudY0 + cloudHeight;
