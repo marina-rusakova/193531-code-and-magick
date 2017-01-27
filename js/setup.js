@@ -1,6 +1,6 @@
 'use strict';
 
-var initWizardCustomizationWindow = function() {
+var initWizardCustomizationWindow = function () {
 
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
@@ -27,7 +27,7 @@ var initWizardCustomizationWindow = function() {
 
   wizardCoat.addEventListener('click', function () {
     var colorNumber = Math.floor(Math.random() * wizardCoatColors.length);
-    wizardCoat.style.fill = wizardCoatColors[colorNumber]; 
+    wizardCoat.style.fill = wizardCoatColors[colorNumber];
   });
 
   var wizardEyes = wizard.querySelector('#wizard-eyes');
@@ -41,7 +41,7 @@ var initWizardCustomizationWindow = function() {
 
   wizardEyes.addEventListener('click', function () {
     var colorNumber = Math.floor(Math.random() * wizardEyesColors.length);
-    wizardEyes.style.fill = wizardEyesColors[colorNumber]; 
+    wizardEyes.style.fill = wizardEyesColors[colorNumber];
   });
 
   var fireball = document.querySelector('.setup-fireball-wrap');
@@ -55,7 +55,7 @@ var initWizardCustomizationWindow = function() {
 
   fireball.addEventListener('click', function () {
     var colorNumber = Math.floor(Math.random() * fireballColors.length);
-    fireball.style.background = fireballColors[colorNumber]; 
+    fireball.style.background = fireballColors[colorNumber];
   });
 };
 
