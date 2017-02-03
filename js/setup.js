@@ -5,13 +5,53 @@ var initWizardCustomizationWindow = function () {
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
+  var setupSubmit = setup.querySelector('.setup-submit');
+
+  var ENTER_KEY_CODE = 13;
+  var ESCAPE_KEY_CODE = 27;
+
+  var isEnterPressed = function (evt) {
+    return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
+  }
+
+  var showSetupWindow = function() {
+    setup.classList.remove('invisible');
+
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === ESCAPE_KEY_CODE) {
+        setup.classList.add('invisible');
+      }
+    });
+  };
+
+  var hideSetupWindow = function() {
+    setup.classList.add('invisible');
+  };
 
   setupOpen.addEventListener('click', function () {
-    setup.classList.remove('invisible');
+    showSetupWindow();
+  });
+
+  setupOpen.addEventListener('keydown', function (evt) {
+    if (isEnterPressed(evt)) {
+      showSetupWindow();
+    }
   });
 
   setupClose.addEventListener('click', function () {
-    setup.classList.add('invisible');
+    hideSetupWindow();
+  });
+
+  setupClose.addEventListener('keydown', function (evt) {
+    if (isEnterPressed(evt)) {
+      hideSetupWindow();
+    }
+  });
+
+  setupSubmit.addEventListener('keydown', function (evt) {
+    if (isEnterPressed(evt)) {
+      hideSetupWindow();
+    }
   });
 
   var wizard = document.querySelector('#wizard');
