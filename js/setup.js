@@ -12,9 +12,9 @@ var initWizardCustomizationWindow = function () {
 
   var isEnterPressed = function (evt) {
     return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
-  }
+  };
 
-  var showSetupWindow = function() {
+  var showSetupWindow = function () {
     setup.classList.remove('invisible');
 
     document.addEventListener('keydown', function (evt) {
@@ -24,7 +24,7 @@ var initWizardCustomizationWindow = function () {
     });
   };
 
-  var hideSetupWindow = function() {
+  var hideSetupWindow = function () {
     setup.classList.add('invisible');
   };
 
