@@ -6,6 +6,7 @@ var initWizardCustomizationWindow = function () {
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
   var setupSubmit = setup.querySelector('.setup-submit');
+  var setupOpenIcon = document.querySelector('.setup-open-icon');
 
   var ENTER_KEY_CODE = 13;
   var ESCAPE_KEY_CODE = 27;
@@ -14,14 +15,16 @@ var initWizardCustomizationWindow = function () {
     return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
   };
 
+  var closeSetupWindow = function (evt) {
+    if (evt.keyCode === ESCAPE_KEY_CODE) {
+      setup.classList.add('invisible');
+      document.removeEventListener('keyup', closeSetupWindow);
+    }
+  };
+
   var showSetupWindow = function () {
     setup.classList.remove('invisible');
-
-    document.addEventListener('keydown', function (evt) {
-      if (evt.keyCode === ESCAPE_KEY_CODE) {
-        setup.classList.add('invisible');
-      }
-    });
+    document.addEventListener('keyup', closeSetupWindow);
   };
 
   var hideSetupWindow = function () {
@@ -32,23 +35,37 @@ var initWizardCustomizationWindow = function () {
     showSetupWindow();
   });
 
-  setupOpen.addEventListener('keydown', function (evt) {
+  setupOpen.addEventListener('keyup', function (evt) {
+    setupOpenIcon.setAttribute('aria-pressed', true);
+
     if (isEnterPressed(evt)) {
       showSetupWindow();
     }
+  });
+
+  setupOpen.addEventListener('keydown', function (evt) {
+    setupOpenIcon.setAttribute('aria-pressed', false);
   });
 
   setupClose.addEventListener('click', function () {
     hideSetupWindow();
   });
 
-  setupClose.addEventListener('keydown', function (evt) {
+  setupClose.addEventListener('keyup', function (evt) {
+    setupClose.setAttribute('aria-pressed', true);
+
     if (isEnterPressed(evt)) {
       hideSetupWindow();
     }
   });
 
+  setupClose.addEventListener('keydown', function (evt) {
+    setupClose.setAttribute('aria-pressed', false);
+  });
+
   setupSubmit.addEventListener('keydown', function (evt) {
+    evt.preventDefault();
+
     if (isEnterPressed(evt)) {
       hideSetupWindow();
     }
