@@ -36,15 +36,16 @@ var initWizardCustomizationWindow = function () {
   });
 
   setupOpen.addEventListener('keyup', function (evt) {
-    setupOpenIcon.setAttribute('aria-pressed', true);
-
     if (isEnterPressed(evt)) {
+      setupOpenIcon.setAttribute('aria-pressed', false);
       showSetupWindow();
     }
   });
 
   setupOpen.addEventListener('keydown', function (evt) {
-    setupOpenIcon.setAttribute('aria-pressed', false);
+    if (isEnterPressed(evt)) {
+      setupOpenIcon.setAttribute('aria-pressed', true);
+    }
   });
 
   setupClose.addEventListener('click', function () {
@@ -52,20 +53,25 @@ var initWizardCustomizationWindow = function () {
   });
 
   setupClose.addEventListener('keyup', function (evt) {
-    setupClose.setAttribute('aria-pressed', true);
-
     if (isEnterPressed(evt)) {
+      setupClose.setAttribute('aria-pressed', false);
       hideSetupWindow();
     }
   });
 
   setupClose.addEventListener('keydown', function (evt) {
-    setupClose.setAttribute('aria-pressed', false);
+    if (isEnterPressed(evt)) {
+      setupClose.setAttribute('aria-pressed', true);
+    }
   });
 
   setupSubmit.addEventListener('keydown', function (evt) {
+    /*Евгений, к сожалению "preventDefault" не предотвращает отправку формы, 
+    если я помещаю его в обработчик события для "keyup" ниже*/
     evt.preventDefault();
+  });
 
+  setupSubmit.addEventListener('keyup', function (evt) {
     if (isEnterPressed(evt)) {
       hideSetupWindow();
     }
