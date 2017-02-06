@@ -5,13 +5,76 @@ var initWizardCustomizationWindow = function () {
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
+  var setupSubmit = setup.querySelector('.setup-submit');
+  var setupOpenIcon = document.querySelector('.setup-open-icon');
+
+  var ENTER_KEY_CODE = 13;
+  var ESCAPE_KEY_CODE = 27;
+
+  var isEnterPressed = function (evt) {
+    return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
+  };
+
+  var closeSetupWindow = function (evt) {
+    if (evt.keyCode === ESCAPE_KEY_CODE) {
+      setup.classList.add('invisible');
+      document.removeEventListener('keyup', closeSetupWindow);
+    }
+  };
+
+  var showSetupWindow = function () {
+    setup.classList.remove('invisible');
+    document.addEventListener('keyup', closeSetupWindow);
+  };
+
+  var hideSetupWindow = function () {
+    setup.classList.add('invisible');
+  };
 
   setupOpen.addEventListener('click', function () {
-    setup.classList.remove('invisible');
+    showSetupWindow();
+  });
+
+  setupOpen.addEventListener('keyup', function (evt) {
+    if (isEnterPressed(evt)) {
+      setupOpenIcon.setAttribute('aria-pressed', false);
+      showSetupWindow();
+    }
+  });
+
+  setupOpen.addEventListener('keydown', function (evt) {
+    if (isEnterPressed(evt)) {
+      setupOpenIcon.setAttribute('aria-pressed', true);
+    }
   });
 
   setupClose.addEventListener('click', function () {
-    setup.classList.add('invisible');
+    hideSetupWindow();
+  });
+
+  setupClose.addEventListener('keyup', function (evt) {
+    if (isEnterPressed(evt)) {
+      setupClose.setAttribute('aria-pressed', false);
+      hideSetupWindow();
+    }
+  });
+
+  setupClose.addEventListener('keydown', function (evt) {
+    if (isEnterPressed(evt)) {
+      setupClose.setAttribute('aria-pressed', true);
+    }
+  });
+
+  setupSubmit.addEventListener('keydown', function (evt) {
+    /* Евгений, к сожалению "preventDefault" не предотвращает отправку формы,
+    если я помещаю его в обработчик события для "keyup" ниже*/
+    evt.preventDefault();
+  });
+
+  setupSubmit.addEventListener('keyup', function (evt) {
+    if (isEnterPressed(evt)) {
+      hideSetupWindow();
+    }
   });
 
   var wizard = document.querySelector('#wizard');
