@@ -66,7 +66,7 @@ var initWizardCustomizationWindow = function () {
   });
 
   setupSubmit.addEventListener('keydown', function (evt) {
-    /*Евгений, к сожалению "preventDefault" не предотвращает отправку формы, 
+    /* Евгений, к сожалению "preventDefault" не предотвращает отправку формы,
     если я помещаю его в обработчик события для "keyup" ниже*/
     evt.preventDefault();
   });
