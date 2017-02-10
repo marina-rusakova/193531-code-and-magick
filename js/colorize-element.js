@@ -1,6 +1,6 @@
 'use strict';
 
-window.colorizeElement = function(element, colors, property) {
+window.colorizeElement = function (element, colors, property) {
   var currentColor = colors[0];
   var ENTER_KEY_CODE = 13;
 
@@ -12,7 +12,7 @@ window.colorizeElement = function(element, colors, property) {
     var newColor = window.utils.getRandomElementExcept(colors, currentColor);
 
     currentColor = newColor;
-    element.style[property]= currentColor;
+    element.style[property] = currentColor;
   });
 
   element.addEventListener('keyup', function (evt) {
@@ -22,7 +22,7 @@ window.colorizeElement = function(element, colors, property) {
       var newColor = window.utils.getRandomElementExcept(colors, currentColor);
 
       currentColor = newColor;
-      element.style[property]= currentColor;
+      element.style[property] = currentColor;
     }
   });
 
