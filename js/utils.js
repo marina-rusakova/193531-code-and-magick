@@ -16,7 +16,7 @@ window.utils = {
     if (filteredElements.length !== 0) {
       newValue = window.utils.getRandomElement(filteredElements);
     } else {
-      newValue = undefined;
+      newValue = null;
     }
 
     return newValue;
