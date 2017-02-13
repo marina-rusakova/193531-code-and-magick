@@ -1,25 +1,24 @@
 'use strict';
 
-window.utils = (function () {
-  var getRandomElement = function (array) {
+window.utils = {
+  getRandomElement: function (array) {
     var randomElementIndex = Math.floor(Math.random() * array.length);
     return array[randomElementIndex];
-  };
+  },
 
-  var getRandomElementExcept = function (colors, currentColor) {
-    var newColor = null;
+  getRandomElementExcept: function (elements, exceptValue) {
+    var newValue = null;
 
-    while (!newColor || newColor === currentColor) {
-      newColor = getRandomElement(colors);
+    var filteredElements = elements.filter(function (e) {
+      return e !== exceptValue;
+    });
+
+    if (filteredElements.length !== 0 ) {
+      newValue = utils.getRandomElement(filteredElements);
+    } else {
+      newValue = exceptValue;
     }
 
-    return newColor;
-  };
-
-  return {
-    getRandomElementExcept: getRandomElementExcept
-
-  };
-})();
-
-
+    return newValue;
+  }
+};
