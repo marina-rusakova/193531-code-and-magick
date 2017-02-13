@@ -13,8 +13,8 @@ window.utils = {
       return e !== exceptValue;
     });
 
-    if (filteredElements.length !== 0 ) {
-      newValue = utils.getRandomElement(filteredElements);
+    if (filteredElements.length !== 0) {
+      newValue = window.utils.getRandomElement(filteredElements);
     } else {
       newValue = exceptValue;
     }
