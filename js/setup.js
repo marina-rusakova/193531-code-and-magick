@@ -66,8 +66,6 @@ var initWizardCustomizationWindow = function () {
   });
 
   setupSubmit.addEventListener('keydown', function (evt) {
-    /* Евгений, к сожалению "preventDefault" не предотвращает отправку формы,
-    если я помещаю его в обработчик события для "keyup" ниже*/
     evt.preventDefault();
   });
 
@@ -88,10 +86,7 @@ var initWizardCustomizationWindow = function () {
     'rgb(0, 0, 0)'
   ];
 
-  wizardCoat.addEventListener('click', function () {
-    var colorNumber = Math.floor(Math.random() * wizardCoatColors.length);
-    wizardCoat.style.fill = wizardCoatColors[colorNumber];
-  });
+  window.colorizeElement(wizardCoat, wizardCoatColors, 'fill');
 
   var wizardEyes = wizard.querySelector('#wizard-eyes');
   var wizardEyesColors = [
@@ -102,10 +97,8 @@ var initWizardCustomizationWindow = function () {
     'green'
   ];
 
-  wizardEyes.addEventListener('click', function () {
-    var colorNumber = Math.floor(Math.random() * wizardEyesColors.length);
-    wizardEyes.style.fill = wizardEyesColors[colorNumber];
-  });
+  window.colorizeElement(wizardEyes, wizardEyesColors, 'fill');
+
 
   var fireball = document.querySelector('.setup-fireball-wrap');
   var fireballColors = [
@@ -116,10 +109,7 @@ var initWizardCustomizationWindow = function () {
     '#e6e848'
   ];
 
-  fireball.addEventListener('click', function () {
-    var colorNumber = Math.floor(Math.random() * fireballColors.length);
-    fireball.style.background = fireballColors[colorNumber];
-  });
+  window.colorizeElement(fireball, fireballColors, 'background');
 };
 
 
