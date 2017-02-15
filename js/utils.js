@@ -1,12 +1,12 @@
 'use strict';
 
-window.utils = {
-  getRandomElement: function (array) {
+window.utils = (function () {
+  var getRandomElement = function (array) {
     var randomElementIndex = Math.floor(Math.random() * array.length);
     return array[randomElementIndex];
-  },
+  };
 
-  getRandomElementExcept: function (elements, exceptValue) {
+  var getRandomElementExcept = function (elements, exceptValue) {
     var newValue = null;
 
     var filteredElements = elements.filter(function (e) {
@@ -20,5 +20,10 @@ window.utils = {
     }
 
     return newValue;
+  };
+
+  return {
+    getRandomElement: getRandomElement,
+    getRandomElementExcept: getRandomElementExcept
   }
-};
+})();
