@@ -25,5 +25,5 @@ window.utils = (function () {
   return {
     getRandomElement: getRandomElement,
     getRandomElementExcept: getRandomElementExcept
-  }
+  };
 })();
